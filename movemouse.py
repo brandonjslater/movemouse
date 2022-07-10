@@ -11,7 +11,7 @@ def clear():
 
 def setTimeout():
     msg = "Welcome to movemouse! This program checks to see if your mouse position has changed over a period of time. This is where you set THAT period of time (in seconds)."
-    return int(mouse.prompt(text=msg, title='Choose a timeout window' , default='60'))
+    return int(input(msg))
 
 def moveMouseInSquare():
     mouse.move(0, 150, absolute = False, duration = .5)
@@ -20,8 +20,8 @@ def moveMouseInSquare():
     mouse.move(-150, 0, absolute = False, duration = .5)
 
 def init():
-    # timeout = setTimeout()
-    timeout = 5
+    timeout = setTimeout()
+    # timeout = 5
     real_time = timeout / 60
     clock = 0
     lazy_count = 0
