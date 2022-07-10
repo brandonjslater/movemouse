@@ -1,4 +1,4 @@
-import pyautogui, time
+import mouse, time
 from os import system, name
 
 def clear():
@@ -11,16 +11,17 @@ def clear():
 
 def setTimeout():
     msg = "Welcome to movemouse! This program checks to see if your mouse position has changed over a period of time. This is where you set THAT period of time (in seconds)."
-    return int(pyautogui.prompt(text=msg, title='Choose a timeout window' , default='60'))
+    return int(mouse.prompt(text=msg, title='Choose a timeout window' , default='60'))
 
 def moveMouseInSquare():
-    pyautogui.moveRel(0, 150, duration = .5)
-    pyautogui.moveRel(150, 0, duration = .5)
-    pyautogui.moveRel(0,-150, duration = .5)
-    pyautogui.moveRel(-150, 0, duration = .5)
+    mouse.move(0, 150, absolute = False, duration = .5)
+    mouse.move(150, 0, absolute = False, duration = .5)
+    mouse.move(0,-150, absolute = False, duration = .5)
+    mouse.move(-150, 0, absolute = False, duration = .5)
 
 def init():
-    timeout = setTimeout()
+    # timeout = setTimeout()
+    timeout = 5
     real_time = timeout / 60
     clock = 0
     lazy_count = 0
@@ -36,11 +37,11 @@ def init():
         print("Run Time: "+str(round(clock/60,2))+" Min")
         print("Productive Time: "+str(round(productive_minutes,2))+" Min")
         print("Productive Percentage: "+str(round(productive_percentage,2))+"%")
-        x = pyautogui.position()
+        x = mouse.get_position()
         y = "Not recorded"
         print("First Position: "+str(x))
         time.sleep(timeout)
-        y = pyautogui.position()
+        y = mouse.get_position()
         print("Second Position: "+str(y))
         if(x == y):
             print("Moving!")
