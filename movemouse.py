@@ -29,6 +29,7 @@ def init():
     productive_percentage = 100
     total_interval = productive_count + lazy_count
     productive_minutes = 0
+    clear()
     while True:
         print("Thank you for using movemouse! Close this window to kill the program.")
         print("------STATS------")
